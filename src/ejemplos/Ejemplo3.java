@@ -1,5 +1,6 @@
 package ejemplos;
 
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -78,5 +79,4 @@ public class Ejemplo3 {
 		System.out.println("0. Salir");
 		System.out.println();
 	}
-
 }
