@@ -1,4 +1,4 @@
-package ejercicio5;
+package ejercicios;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,29 +6,34 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.TreeMap;
+import java.util.HashMap;
 import java.util.TreeSet;
 
-public class FicheroProducto {
+import ejercicio5.Producto;
 
-	public static TreeSet<Producto> leerFichero() {
-		TreeSet<Producto> productos = new TreeSet<>();
-		Producto p;
+public class FicheroEjercicio5 {
+	
+	public static HashMap<String, Double> leerFichero() {
+		
+		HashMap<String, Double> productos = new HashMap<String, Double>();
+		
 		String nombre;
 		double precio;
 		BufferedReader br = null;
+		
 		try {
 			br = new BufferedReader(new FileReader("src\\ejercicio5\\productos.txt"));
+			
 			String linea = br.readLine();
 			String[] datos;
+			
 			while (linea != null) {
 				datos = linea.split(" ");
 
 				nombre = datos[0];
 				precio = Double.parseDouble(datos[1]); // Devuelve double, tipo primitivo
 
-				p = new Producto(nombre, precio);
-				productos.add(p);
+				productos.put(nombre, precio);
 
 				linea = br.readLine();
 			}
@@ -53,17 +58,17 @@ public class FicheroProducto {
 		return productos;
 
 	}
-
-	public static void escribirFichero(TreeSet<Producto> productos) {
+	
+	public static void escribirFichero(HashMap<String, Double> productos) {
 		BufferedWriter bw = null;
 		String nombre;
 		double precio;
 		try {
 			bw = new BufferedWriter(new FileWriter("src\\ejercicio5\\productos.txt"));
 			
-			for(Producto p : productos) {
-				nombre = p.getNombre();
-				precio = p.getPrecio();
+			for(String nom : productos.keySet()) {
+				nombre = nom;
+				precio = productos.get(nom);
 				
 				bw.write(nombre + " " + precio);
 				bw.newLine();
@@ -85,6 +90,4 @@ public class FicheroProducto {
 			}
 		}
 	}
-	
-	
 }

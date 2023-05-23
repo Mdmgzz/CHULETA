@@ -3,11 +3,13 @@ package ejercicios;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import ejercicio5.FicheroProducto;
+
 public class Ejercicio5 {
 
 	public static void main(String[] args) {
 
-		HashMap<String, Double> productos = new HashMap<>();
+		HashMap<String, Double> productos = FicheroEjercicio5.leerFichero();
 		int opc;
 		String nombre;
 		double precio;
@@ -48,6 +50,9 @@ public class Ejercicio5 {
 			case 3: // Listar
 				System.out.println(productos);
 				break;
+			case 4:
+				FicheroEjercicio5.escribirFichero(productos);
+				break;
 			case 0: // Salir
 				System.out.println("Saliendo del sistema...");
 				break;
@@ -57,6 +62,7 @@ public class Ejercicio5 {
 
 		} while (opc != 0);
 
+		sc.close();
 	}
 
 	private static void menu() {
@@ -64,6 +70,7 @@ public class Ejercicio5 {
 		System.out.println("1. Alta producto");
 		System.out.println("2. Baja producto");
 		System.out.println("3. Listar existencias");
+		System.out.println("4. Guardar");
 		System.out.println("0. Salir");
 	}
 }

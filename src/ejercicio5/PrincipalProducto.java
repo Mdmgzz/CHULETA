@@ -31,8 +31,12 @@ public class PrincipalProducto {
 
 				p = new Producto(nombre, precio);
 
-				productos.add(p);
-
+				if(productos.add(p)) {
+					System.out.println("Añadido correctamente");
+				} else {
+					System.out.println("El producto ya existe");
+				}
+				
 				break;
 			case 2:// Baja de producto
 				System.out.println("Introduzca el nombre del producto:");
@@ -54,6 +58,7 @@ public class PrincipalProducto {
 				}
 				break;
 			case 4:
+				FicheroProducto.escribirFichero(productos);
 				break;
 			case 0: // Salir
 				System.out.println("Saliendo del sistema...");
